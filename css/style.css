@@ -1,0 +1,889 @@
+/* ==========================================================================
+   BISWAS DIGITAL HUB - BESPOKE EDITORIAL AGENCY STYLES
+   Pristine White Balance, Refined Micro-Interactions, Tactile Tactility,
+   High-Contrast Typography, Smooth Transitions & Responsive Precision.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-bn: 'Hind Siliguri', sans-serif;
+
+  /* Color Palette: Pristine White & Deep Navy with Vibrant Accents */
+  --bg-page: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-card: #ffffff;
+  
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-light: #64748b;
+  
+  --brand-blue: #0052cc;
+  --brand-blue-hover: #0747a6;
+  --brand-navy: #0a192f;
+  
+  --accent-orange: #ea580c;
+  --accent-orange-hover: #c2410c;
+  
+  --wa-green: #10b981;
+  --wa-green-hover: #059669;
+  --wa-bubble: #dcf8c6;
+  
+  --border-light: #e2e8f0;
+  --border-subtle: #cbd5e1;
+  --border-focus: #3b82f6;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  --shadow-hover: 0 12px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+  --shadow-float: 0 20px 40px -10px rgba(0, 82, 204, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-bn {
+  font-family: var(--font-bn);
+}
+
+/* Subtle architectural dot grid */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
+}
+
+/* --------------------------------------------------------------------------
+   1. INTRO CURTAIN LOADER
+   -------------------------------------------------------------------------- */
+#introCurtain {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.4s ease;
+}
+
+#introCurtain.curtain-up {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-bar {
+  width: 140px;
+  height: 4px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loader-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #0052cc, #0284c7, #10b981);
+  border-radius: 999px;
+  transition: width 0.4s ease-out;
+}
+
+/* --------------------------------------------------------------------------
+   2. SMOOTH 3D & FLOATING ANIMATIONS
+   -------------------------------------------------------------------------- */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1deg);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.float-3d {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.float-gentle {
+  animation: floatGentle 3s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   3. KINETIC TICKER MARQUEE
+   -------------------------------------------------------------------------- */
+.marquee-track {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 1.5rem;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: 1.5rem;
+  animation: scrollMarquee 26s linear infinite;
+}
+
+.marquee-track:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - 1.5rem)); }
+}
+
+/* --------------------------------------------------------------------------
+   4. CYBER DESK HERO CARD (REFERENCE SPEC)
+   -------------------------------------------------------------------------- */
+.cyber-desk-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 45px -10px rgba(15, 23, 42, 0.1),
+    0 1px 3px rgba(15, 23, 42, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.cyber-desk-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 55px -12px rgba(0, 82, 204, 0.15);
+}
+
+.cyber-service-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 14px;
+  background-color: #f8fafc;
+  border: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.cyber-service-row:hover {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   5. INTERACTIVE SMARTPHONE SIMULATOR (TAB 2)
+   -------------------------------------------------------------------------- */
+.phone-mockup-frame {
+  background: #ffffff;
+  border: 8px solid #0f172a;
+  border-radius: 36px;
+  box-shadow: 
+    0 20px 45px -10px rgba(15, 23, 42, 0.16),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  position: relative;
+}
+
+.wa-chat-bg {
+  background-color: #efeae2;
+  background-image: radial-gradient(#d1d7db 0.8px, transparent 0.8px);
+  background-size: 16px 16px;
+}
+
+.wa-msg-bubble-user {
+  background-color: var(--wa-bubble);
+  border-radius: 12px 12px 2px 12px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  animation: bubblePop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.wa-msg-bubble-desk {
+  background-color: #ffffff;
+  border-radius: 12px 12px 12px 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  animation: bubblePop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes bubblePop {
+  0% { opacity: 0; transform: scale(0.92) translateY(6px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.typing-dot {
+  width: 5px;
+  height: 5px;
+  background-color: #64748b;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typingBounce 1.2s infinite ease-in-out;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-4px); }
+}
+
+/* --------------------------------------------------------------------------
+   6. BENTO CARDS & HOLOGRAPHIC CHIP
+   -------------------------------------------------------------------------- */
+.bento-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: #93c5fd;
+  box-shadow: var(--shadow-hover);
+}
+
+.bento-card-featured {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1.5px solid #bfdbfe;
+}
+
+.bento-card-featured:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 16px 36px -6px rgba(0, 82, 204, 0.12);
+}
+
+/* Hologram PVC simulation */
+.hologram-pvc-card {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 50%, #0369a1 100%);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hologram-pvc-card::before {
+  content: '';
+  position: absolute;
+  inset: -100%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 45%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.2) 55%,
+    transparent 70%
+  );
+  transform: rotate(25deg);
+  transition: transform 0.8s ease;
+}
+
+.bento-card:hover .hologram-pvc-card::before {
+  transform: rotate(25deg) translate(80%, 80%);
+}
+
+/* --------------------------------------------------------------------------
+   7. DIGITAL THERMAL CASH RECEIPT
+   -------------------------------------------------------------------------- */
+.receipt-paper {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 
+    0 16px 36px -8px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.03);
+  position: relative;
+}
+
+.barcode-strip {
+  background: repeating-linear-gradient(
+    90deg,
+    #0f172a 0px,
+    #0f172a 2px,
+    transparent 2px,
+    transparent 4px,
+    #0f172a 4px,
+    #0f172a 6px,
+    transparent 6px,
+    transparent 8px,
+    #0f172a 8px,
+    #0f172a 11px,
+    transparent 11px,
+    transparent 14px
+  );
+  height: 36px;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   8. TACTILE & SHIMMER BUTTONS
+   -------------------------------------------------------------------------- */
+.btn-magnetic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  border-radius: 12px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.btn-magnetic::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: rotate(30deg) translateY(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-magnetic:hover::after {
+  transform: rotate(30deg) translateY(100%);
+}
+
+.btn-magnetic:active {
+  transform: scale(0.98);
+}
+
+.btn-primary-orange {
+  background: #ea580c;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);
+}
+
+.btn-primary-orange:hover {
+  background: #c2410c;
+  box-shadow: 0 8px 22px rgba(234, 88, 12, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-primary-blue {
+  background: #0052cc;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 82, 204, 0.25);
+}
+
+.btn-primary-blue:hover {
+  background: #0747a6;
+  box-shadow: 0 8px 22px rgba(0, 82, 204, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-wa-green {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+}
+
+.btn-wa-green:hover {
+  background: #059669;
+  box-shadow: 0 8px 22px rgba(16, 185, 129, 0.35);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   9. LIVE RADAR PULSE
+   -------------------------------------------------------------------------- */
+.live-radar-ping {
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: radarWave 2s infinite;
+}
+
+@keyframes radarWave {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* --------------------------------------------------------------------------
+   10. ACCORDION PHYSICS
+   -------------------------------------------------------------------------- */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.faq-item.active .faq-content {
+  max-height: 350px;
+  opacity: 1;
+}
+
+.faq-item.active .faq-chevron {
+  transform: rotate(180deg);
+}
+
+/* --------------------------------------------------------------------------
+   11. MOBILE BOTTOM DOCK
+   -------------------------------------------------------------------------- */
+.mobile-bottom-dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   12. TABS & PILLS
+   -------------------------------------------------------------------------- */
+.desk-tab-btn.active {
+  background-color: #ffffff;
+  color: #0052cc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.category-pill.active {
+  background-color: #0052cc;
+  color: #ffffff;
+  border-color: #0052cc;
+  box-shadow: 0 4px 12px rgba(0, 82, 204, 0.2);
+}
+
+.checklist-tab-btn.active {
+  background-color: #0052cc;
+  color: #ffffff;
+  border-color: #0052cc;
+  box-shadow: 0 4px 12px rgba(0, 82, 204, 0.2);
+}
+
+/* ==========================================================================
+   13. COMPACT HIGH-DENSITY MOBILE & DESKTOP SERVICE TILES
+   Engineered to fit all 16+ services in one compact view without endless scroll.
+   ========================================================================== */
+.service-tile {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+}
+
+.service-tile:hover {
+  transform: translateY(-3px);
+  border-color: #3b82f6;
+  box-shadow: 0 10px 24px -6px rgba(0, 82, 204, 0.12);
+}
+
+.service-tile:active {
+  transform: scale(0.97);
+}
+
+/* Category pill counter badge */
+.pill-count {
+  background-color: rgba(255, 255, 255, 0.25);
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  margin-left: 4px;
+}
+
+/* Service Detail Modal */
+#serviceModal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+#serviceModal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#serviceModalCard {
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#serviceModal.active #serviceModalCard {
+  transform: translateY(0) scale(1);
+}
+
+/* Hide scrollbars for pill bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==========================================================================
+   14. MOBILE APP LAUNCHER GRID (ALL 16 SERVICES IN ONE VIEW)
+   Designed to fit all 16 services cleanly within a single mobile screen fold.
+   ========================================================================== */
+.app-launcher-wrapper {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+  padding: 1rem;
+}
+
+.app-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem 0.25rem;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  user-select: none;
+}
+
+.app-tile:hover {
+  background-color: #f8fafc;
+  transform: translateY(-2px);
+}
+
+.app-tile:active {
+  transform: scale(0.92);
+}
+
+.app-tile-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.35rem;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
+}
+
+.app-tile:hover .app-tile-icon-box {
+  transform: scale(1.08);
+  box-shadow: 0 6px 14px -3px rgba(0, 82, 204, 0.2);
+}
+
+.app-tile-badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 999px;
+  line-height: 1;
+  border: 1px solid #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Service Bottom Sheet Drawer for Mobile */
+.bottom-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .bottom-sheet-backdrop {
+    align-items: center;
+    padding: 1rem;
+  }
+}
+
+.bottom-sheet-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bottom-sheet-drawer {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  padding: 1.5rem;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 640px) {
+  .bottom-sheet-drawer {
+    border-radius: 28px;
+    transform: translateY(20px) scale(0.96);
+    box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25);
+  }
+}
+
+.bottom-sheet-backdrop.active .bottom-sheet-drawer {
+  transform: translateY(0) scale(1);
+}
+
+.drawer-drag-handle {
+  width: 36px;
+  height: 4px;
+  background-color: #cbd5e1;
+  border-radius: 999px;
+  margin: 0 auto 1rem auto;
+}
+
+/* ==========================================================================
+   15. ENHANCED MOTION, MICRO-INTERACTIONS & HOVER EFFECTS (FULL SITE)
+   ========================================================================== */
+
+/* A. Laser Barcode Scanner Animation on Receipt */
+.barcode-strip {
+  position: relative;
+  overflow: hidden;
+}
+
+.barcode-strip::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(239, 68, 68, 0.9);
+  box-shadow: 0 0 8px 1px rgba(239, 68, 68, 0.8);
+  animation: laserScan 2.2s infinite ease-in-out alternate;
+}
+
+@keyframes laserScan {
+  0% { top: 5%; opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { top: 90%; opacity: 0.4; }
+}
+
+/* B. Receipt Price Flash Animation on Update */
+@keyframes priceFlash {
+  0% { transform: scale(1); color: #0f172a; }
+  50% { transform: scale(1.12); color: #10b981; }
+  100% { transform: scale(1); color: #0f172a; }
+}
+
+.price-updated {
+  animation: priceFlash 0.45s ease-out;
+}
+
+/* C. Floating WhatsApp Breathing Glow Animation */
+.floating-wa-pulse {
+  animation: waPulseGlow 2.5s infinite;
+}
+
+@keyframes waPulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7), 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(16, 185, 129, 0), 0 15px 30px -5px rgba(16, 185, 129, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0), 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+  }
+}
+
+/* D. Quick Govt Portals Hover Physics */
+.portal-card {
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portal-card:hover {
+  transform: translateY(-4px);
+  border-color: #3b82f6;
+  box-shadow: 0 10px 25px -5px rgba(0, 82, 204, 0.1);
+}
+
+.portal-card:hover .portal-badge {
+  transform: rotate(6deg) scale(1.12);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* E. Subtle Bounce for App Tiles Icon on Hover */
+@keyframes iconBounce {
+  0%, 100% { transform: scale(1.08) translateY(0); }
+  50% { transform: scale(1.12) translateY(-3px); }
+}
+
+.app-tile:hover .app-tile-icon-box {
+  animation: iconBounce 1s infinite ease-in-out;
+}
+
+/* F. Scroll Entrance Reveal & Staggered Groups */
+html {
+  scroll-behavior: smooth;
+}
+
+header.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-bottom-color: rgba(226, 232, 240, 0.9) !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered card groups */
+.reveal-group > .reveal-item {
+  opacity: 0;
+  transform: translateY(28px) scale(0.97);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-group.revealed > .reveal-item {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Snappy stagger delays up to 16 items */
+.reveal-group.revealed > .reveal-item:nth-child(1) { transition-delay: 0.02s; }
+.reveal-group.revealed > .reveal-item:nth-child(2) { transition-delay: 0.04s; }
+.reveal-group.revealed > .reveal-item:nth-child(3) { transition-delay: 0.06s; }
+.reveal-group.revealed > .reveal-item:nth-child(4) { transition-delay: 0.08s; }
+.reveal-group.revealed > .reveal-item:nth-child(5) { transition-delay: 0.10s; }
+.reveal-group.revealed > .reveal-item:nth-child(6) { transition-delay: 0.12s; }
+.reveal-group.revealed > .reveal-item:nth-child(7) { transition-delay: 0.14s; }
+.reveal-group.revealed > .reveal-item:nth-child(8) { transition-delay: 0.16s; }
+.reveal-group.revealed > .reveal-item:nth-child(9) { transition-delay: 0.18s; }
+.reveal-group.revealed > .reveal-item:nth-child(10) { transition-delay: 0.20s; }
+.reveal-group.revealed > .reveal-item:nth-child(11) { transition-delay: 0.22s; }
+.reveal-group.revealed > .reveal-item:nth-child(12) { transition-delay: 0.24s; }
+.reveal-group.revealed > .reveal-item:nth-child(13) { transition-delay: 0.26s; }
+.reveal-group.revealed > .reveal-item:nth-child(14) { transition-delay: 0.28s; }
+.reveal-group.revealed > .reveal-item:nth-child(15) { transition-delay: 0.30s; }
+.reveal-group.revealed > .reveal-item:nth-child(16) { transition-delay: 0.32s; }
+
+/* Parallax ambient orbs */
+.parallax-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+  will-change: transform;
+}
+
+/* Floating Back to Top Button */
+#backToTopBtn {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+#backToTopBtn.visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+/* G. Tactile Arrow Slide on Button Hover */
+.btn-magnetic:hover [data-lucide="arrow-right"] {
+  transform: translateX(4px);
+  transition: transform 0.2s ease;
+}
+
+.btn-magnetic [data-lucide="arrow-right"] {
+  transition: transform 0.2s ease;
+}
